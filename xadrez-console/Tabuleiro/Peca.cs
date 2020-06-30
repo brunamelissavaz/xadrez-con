@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 
@@ -19,7 +20,10 @@ namespace tabuleiro
             this.cor = cor;
             this.qteMovimentos = 0;
         }
-
+        public void incrementarQteMovimentos()
+        {
+            qteMovimentos++;
+        }
 
     }
 }
