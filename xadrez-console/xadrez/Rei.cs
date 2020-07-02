@@ -1,6 +1,4 @@
-﻿using System;
-
-using tabuleiro;
+﻿using tabuleiro;
 
 namespace xadrez
 {
@@ -28,6 +26,7 @@ namespace xadrez
         public override bool[,] movimentosPossiveis()
         {
             bool[,] mat = new bool[tab.linhas, tab.colunas];
+
             Posicao pos = new Posicao(0, 0);
 
             // acima
@@ -78,21 +77,22 @@ namespace xadrez
             {
                 mat[pos.linha, pos.coluna] = true;
             }
+
             // #jogadaespecial roque
-            if (qteMovimentos==0 && !partida.xeque)
+            if (qteMovimentos == 0 && !partida.xeque)
             {
-                //#jogadaespecial roque pequeno
+                // #jogadaespecial roque pequeno
                 Posicao posT1 = new Posicao(posicao.linha, posicao.coluna + 3);
                 if (testeTorreParaRoque(posT1))
                 {
                     Posicao p1 = new Posicao(posicao.linha, posicao.coluna + 1);
                     Posicao p2 = new Posicao(posicao.linha, posicao.coluna + 2);
-                    if (tab.peca(p1)==null && tab.peca(p2)==null)
+                    if (tab.peca(p1) == null && tab.peca(p2) == null)
                     {
                         mat[posicao.linha, posicao.coluna + 2] = true;
                     }
                 }
-                //#jogadaespecial roque grande
+                // #jogadaespecial roque grande
                 Posicao posT2 = new Posicao(posicao.linha, posicao.coluna - 4);
                 if (testeTorreParaRoque(posT2))
                 {
@@ -105,6 +105,7 @@ namespace xadrez
                     }
                 }
             }
+
             return mat;
         }
     }
